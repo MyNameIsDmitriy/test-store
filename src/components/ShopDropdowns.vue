@@ -204,6 +204,7 @@ export default {
 }
 
 .dropdown-list__item-menu-child-valid-buttons-purchace {
+  min-width: 76px;
   display: flex;
   align-items: center;
   gap: 5px;
@@ -216,5 +217,23 @@ export default {
 
 .dropdown-list__item-menu-child-valid-buttons-purchace-icon {
   width: 12px;
+}
+
+@media (max-width: 992px) {
+  .dropdown-list__item-menu-child-valid-header {
+    padding: 15px 5px;
+  }
+
+  .dropdown-list__item-menu-child-valid-buttons-breakline {
+    display: none;
+  }
+}
+
+@media (max-width: 576px) {
+  .dropdown-list__item-menu-child-valid-buttons {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 }
 </style>

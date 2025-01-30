@@ -123,17 +123,6 @@ export default {
   text-align: center;
 }
 
-/* .container__cart-list__item-additional-price {
-  min-width: 80px;
-  padding: 1px 3px;
-  font-size: 12px;
-  font-weight: 500;
-  text-align: center;
-  background-color: #f6f6f6;
-  border: 1px solid #dedede;
-  border-radius: 4px;
-} */
-
 .container__cart-list__item-additional-delete-icon {
   width: 28px;
   padding: 5px;
@@ -159,5 +148,38 @@ export default {
 
 .container__total > p > span{
   font-size: 14px;
+}
+
+@media (max-width: 1440px) {
+  .container__cart-list__item-main {
+    max-width: 50%;
+  }
+}
+
+@media (max-width: 992px) {
+  .container__cart-list__item-additional > span {
+    display: none;
+  }
+
+  .container__cart-list__item-additional-input {
+    width: 35px;
+    padding: 1px;
+  }
+}
+
+@media (max-width: 576px) {
+  
+}
+
+@media (max-width: 576px) {
+  .container__cart-list__item-main {
+    align-items: start;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .container__cart-list__item-additional > span {
+    display: block;
+  }
 }
 </style>

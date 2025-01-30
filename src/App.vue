@@ -85,4 +85,11 @@ export default {
   display: flex;
   gap: 15px;
 }
+
+@media (max-width: 768px) {
+  .app__body {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
 </style>
