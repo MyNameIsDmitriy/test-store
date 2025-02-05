@@ -3,7 +3,7 @@
     <label>Курс:</label>
     <div class="container-input">
       <span class="container-input-icon">₽</span>
-      <input v-model.number="rate" type="number" />
+      <input v-model.number="rate"  type="number" min="20" max="80" />
     </div>
   </div>
 </template>
@@ -23,7 +23,13 @@ export default {
         return this.value;
       },
       set(newValue) {
-        this.$emit('input', newValue);
+        if (newValue < 20) {
+          this.$emit('input', 20);
+        } else if (newValue > 80) {
+          this.$emit('input', 80);
+        } else {
+          this.$emit('input', newValue);
+        }
       },
     },
   },
