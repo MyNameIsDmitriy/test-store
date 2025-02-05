@@ -8,7 +8,12 @@
           <span class="container__cart-list__item-main-product-name">{{ product.productName }}</span>
         </div>
         <div class="container__cart-list__item-additional">
-          <input v-model.number="product.quantity" @change="updateQuantity(product.id, product.quantity)" class="container__cart-list__item-additional-input" type="text">
+          <input
+            v-model="product.quantity"
+            @input="updateQuantity(product)"
+            class="container__cart-list__item-additional-input"
+            type="text"
+          >
           <span>|</span>
           <PriceTag :price="getProductPrice(product.price, product.quantity)" />
           <span>|</span>
@@ -50,8 +55,14 @@ export default {
       this.$store.dispatch('removeFromCart', id);
     },
 
-    updateQuantity(id, quantity) {
-      this.$store.dispatch('updateQuantity', id, quantity);
+    validateQuantity(product) {
+      product.quantity = Number(product.quantity.replace(/[^0-9]*/g, ''));
+      if (product.quantity > product.maxQuantity) product.quantity = product.maxQuantity;
+    },
+
+    updateQuantity(product) {
+      this.validateQuantity(product);
+      this.$store.dispatch('updateQuantity', product.id, product.quantity);
     },
     
     getProductPrice(price, quantity) {

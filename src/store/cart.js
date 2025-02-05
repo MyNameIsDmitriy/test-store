@@ -8,7 +8,10 @@ const cartStore = {
   mutations: {
     addToCart(state, product) {
       const existingProduct = state.cart.find(item => item.id === product.id);
-      if (existingProduct) existingProduct.quantity += product.quantity;
+      if (existingProduct) {
+        if (existingProduct.quantity >= existingProduct.maxQuantity) return 0;
+        else existingProduct.quantity += product.quantity;
+      }
       else state.cart.push(product);
 
       saveToLocalStorage('cart', state.cart);

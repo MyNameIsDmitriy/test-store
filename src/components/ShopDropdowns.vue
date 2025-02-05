@@ -31,7 +31,7 @@
             <div class="dropdown-list__item-menu-child-valid-buttons">
               <PriceTag :price="getPriceInCurrentCurrency(dataItem.C)" />
               <span class="dropdown-list__item-menu-child-valid-buttons-breakline">|</span>
-              <button @click="addItemToCart(dataItem.T, product.G, product.B[dataItem.T].N, dataItem.C)" class="dropdown-list__item-menu-child-valid-buttons-purchace">
+              <button @click="addItemToCart(dataItem.T, product.G, product.B[dataItem.T].N, dataItem.C, dataItem.P)" class="dropdown-list__item-menu-child-valid-buttons-purchace">
                 <img
                   src="@/assets/svg/cart-shopping.svg"
                   class="dropdown-list__item-menu-child-valid-buttons-purchace-icon"
@@ -93,13 +93,14 @@ export default {
       };
     },
 
-    addItemToCart(id, groupName, productName, price) {
+    addItemToCart(id, groupName, productName, price, maxQuantity) {
       const product = {
         id,
         groupName,
         productName,
         quantity: 1,
         price,
+        maxQuantity,
       };
 
       this.$store.dispatch('addToCart', product);
