@@ -19,6 +19,8 @@ import ShoppingCart from "@/components/ShoppingCart.vue";
 
 import products from "@/data/names.json";
 
+import { fetchData } from "@/utils/utils.js";
+
 export default {
   name: 'App',
   components: {
@@ -41,22 +43,8 @@ export default {
   },
 
   methods: {
-    async fetchData() {
-      try {
-        const response = await fetch('/data.json'); 
-        if (response.ok) {
-          const result = await response.json();
-          this.data = result;
-        } else {
-          console.error("Ошибка загрузки данных");
-        }
-      } catch (error) {
-        console.error("Ошибка при получении данных", error);
-      }
-    },
-
-    updatePrices() {
-      this.fetchData();
+    async updatePrices() {
+      this.data = await fetchData();
       this.$store.dispatch('setExchangeRate', this.exchangeRate);
     },
   },
