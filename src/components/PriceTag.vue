@@ -1,25 +1,9 @@
 <template>
-  <p
-    @transitionend="resetAnimation"
-    class="price-tag"
-    :class="{
-      'highlight-red': lastExchangeRate < exchangeRate,
-      'highlight-green': lastExchangeRate > exchangeRate
-    }"
-    ref="price"
-  >
-    ₽ {{ price }}
-  </p>
+  <p @animationend="resetAnimation" class="price-tag" ref="price">₽ {{ price }}</p>
 </template>
 
 <script>
 export default {
-  data() {
-    return {
-      lastCheckedRate: this.$store.getters.exchangeRate,
-    };
-  },
-
   props: {
     price: {
       type: Number,
@@ -40,28 +24,19 @@ export default {
   methods: {
     triggerAnimation() {
       const priceEl = this.$refs.price;
-      if (priceEl) {
-        priceEl.classList.remove('highlight-red', 'highlight-green');
-        void priceEl.offsetWidth;
-        const highlightClass = this.lastExchangeRate < this.exchangeRate ? 'highlight-red' : 'highlight-green';
-        priceEl.classList.add(highlightClass);
-      }
+      const highlightClass = this.lastExchangeRate < this.exchangeRate ? 'highlight-red' : 'highlight-green';
+      if (priceEl) priceEl.classList.add(highlightClass);
     },
 
     resetAnimation() {
       const priceEl = this.$refs.price;
-      if (priceEl) {
-        priceEl.classList.remove('highlight-red', 'highlight-green');
-      }
+      if (priceEl) priceEl.classList.remove('highlight-red', 'highlight-green');
     },
   },
 
   watch: {
-    exchangeRate(newRate) {
-      if (newRate !== this.lastCheckedRate) {
-        this.lastCheckedRate = newRate;
-        this.triggerAnimation();
-      }
+    exchangeRate() {
+      this.triggerAnimation();
     },
   },
 };
