@@ -1,5 +1,8 @@
 # Тестовое задание
 
+## Deploy
+https://test-store-vue2.netlify.app/
+
 ![app image](./src/assets/images/image.png)
 
 ## Условие
