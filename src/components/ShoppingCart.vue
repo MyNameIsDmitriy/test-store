@@ -4,7 +4,7 @@
     <div class="container__cart-list">
       <div v-for="product, productId in cart" :key="productId" class="container__cart-list__item">
         <div class="container__cart-list__item-main">
-          <span class="container__cart-list__item-main-group-name">{{ product.groupName }}</span>
+          <span class="container__cart-list__item-main-group-name">{{ product.typeName }}</span>
           <span class="container__cart-list__item-main-product-name">{{ product.productName }}</span>
         </div>
         <div class="container__cart-list__item-additional">

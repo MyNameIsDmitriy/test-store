@@ -5,7 +5,7 @@
       <UpdateTimer @timer-reset="updatePrices" />
     </div>
     <div class="app__body">
-      <ShopDropdowns :data="data" :products="products" />
+      <ShopDropdowns :data="data" />
       <ShoppingCart />
     </div>
   </div>
@@ -16,8 +16,6 @@ import ShopDropdowns from "@/components/ShopDropdowns.vue";
 import ExchangeRateInput from "@/components/ExchangeRateInput.vue";
 import UpdateTimer from "@/components/UpdateTimer.vue";
 import ShoppingCart from "@/components/ShoppingCart.vue";
-
-import products from "@/data/names.json";
 
 import { fetchData } from "@/utils/utils.js";
 
@@ -32,7 +30,6 @@ export default {
 
   data() {
     return {
-      products,
       data: null,
       exchangeRate: 75,
     }
