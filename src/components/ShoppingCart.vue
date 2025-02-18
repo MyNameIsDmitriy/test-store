@@ -179,10 +179,6 @@ export default {
 }
 
 @media (max-width: 576px) {
-  
-}
-
-@media (max-width: 576px) {
   .container__cart-list__item-main {
     align-items: start;
     flex-direction: column;

@@ -214,7 +214,7 @@ export default {
   .dropdown-list__item-menu-child-buttons {
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: end;
   }
 }
 </style>
